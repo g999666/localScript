@@ -1,0 +1,39 @@
+/**
+ * @author:Knight
+ * @description: 自动获取答案，自动填写答案
+ *              本脚本为开源，仅供学习与参考
+ *              联系方式：g999666@foxmail.com
+ *              git : https://github.com/3286739215/localScript
+ */
+getTxt();
+function getTxt() {
+    var txtTemp = "";
+    // 循环获取答案
+    $(".ui-correct-answer").each(function (j, item) {
+        txtTemp = txtTemp + "_" + $(item).attr("code");
+    });
+    var tempTxt = txtTemp.substr(1)
+    // 答案与脚本拼接
+    let coyText = "let text='" + tempTxt + "';" +
+        "let arry=text.split('_');" +
+        "$('[class=\"ui-question ui-question-independency ui-question-1\"]').each(function (j, item) {" +
+        "$(\"[id=" + "\"+this.id+\"" + "] [code=\"+arry[j]+\"] span\").click()" +
+        "});"
+    // 将上面生成的text自动填写js写入到剪切板
+    execCoy(coyText);
+}
+
+function execCoy(text) {
+    const input = document.createElement('INPUT');
+    input.style.opacity = 0;
+    input.style.position = 'absolute';
+    input.style.left = '-100000px';
+    document.body.appendChild(input);
+
+    input.value = text;
+    input.select();
+    input.setSelectionRange(0, text.length);
+    document.execCommand('copy');
+    document.body.removeChild(input);
+    return true;
+}
