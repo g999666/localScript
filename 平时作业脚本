@@ -16,6 +16,7 @@ function getTxt() {
     if(!tempTxt){
         // 电脑性能不好的不会自动加载elements,请按下方指示手动加载dom
         console.warn("没有获取到答案，请点击审查元素左上角的箭头（快捷键ctrl+shift+c），然后点击页面随便一个地方,之后再执行一遍这个脚本");
+        return;
     }
     // 答案与脚本拼接
     let coyText = "console.log(\"当前脚本如果执行失败，请点击审查元素左上角的箭头（快捷键ctrl+shift+c），然后点击页面随便一个地方,之后再执行一遍这个脚本\");"+
