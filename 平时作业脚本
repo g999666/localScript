@@ -21,7 +21,7 @@ function getTxt() {
         console.log("获取答案成功,答案自动填写脚本已经自动复制到剪切板，请再做一遍这套试卷，复制答案脚本执行即可完成作答");
     }
     // 答案与脚本拼接
-    let coyText = "console.log(\"当前脚本如果执行失败，请点击审查元素左上角的箭头（快捷键ctrl+shift+c），然后点击页面随便一个地方,之后再执行一遍这个脚本\");"+
+    let coyText = "console.warn(\"没有自动填写即为操作失败，当前脚本如果执行失败，请点击审查元素左上角的箭头（快捷键ctrl+shift+c），然后点击页面随便一个地方,之后再执行一遍这个脚本\");"+
     "let text='" + tempTxt + "';" +
         "let arry=text.split('_');" +
         "$('[class=\"ui-question ui-question-independency ui-question-1\"]').each(function (j, item) {" +
